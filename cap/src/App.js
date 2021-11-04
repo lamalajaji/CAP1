@@ -1,20 +1,16 @@
-import './App.css';
-import react from 'react';
-import Game from './components/startPage';
-
-
-
+import { Route } from "react-router";
+import "./App.css";
+import Home from "./components/homepage";
+import Cards from "./components/cards";
+import Instruction from "./components/instruction";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to Flip Cards Game</h1>
-        <button onClick>Let's Play</button>
-        <button>Instructions</button>
-        <div>
-          <Game/>
-        </div>
-      </header>
+      <h1>Test your memory</h1>
+      {/* <Home/> */}
+      <Route exact path="/" component={Home} />
+      <Route exact path="/Cards" component={Cards} />
+      <Route exact path="/Instruction" component={Instruction} />
     </div>
   );
 }
