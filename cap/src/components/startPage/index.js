@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "./style.css";
 
-const Cards = () => {
+export default Cards = () => {
   //is it better to edit on the same array by using setCards or change on a copy?
   const [cardtry, setcardtry] = useState([]);
   const [Cards, setCards] = useState([
@@ -64,4 +64,137 @@ const Cards = () => {
     },
   ]);
 
-}
+
+const [Firstchoice, setFirstchoice] = useState(null);
+  const [Secondchoice, setSecondchoice] = useState(null);
+
+  //background imge
+  const backimge =
+    "https://i.pinimg.com/564x/ec/71/d5/ec71d540678c1c75be21ee35e7f19753.jpg";
+
+  //pair of each card - to save the same id and not repeat the imges url
+  const pairCards = [...Cards];
+
+  // shuuffle Cards function
+  function shuuffleCards(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  // to shuuffle Cards just on the begin
+  useEffect(() => {
+    setcardtry(shuuffleCards(pairCards));
+  }, []);
+
+  // flip Cards on click function -- still
+  const flipCard = (id) => {
+    console.log("gg");
+  };
+
+  let count = 0;
+  
+  const handleClick = (item, i) => {
+    // console.log(item);
+    if (Firstchoice === null) {
+      setFirstchoice(item);
+      setcardtry(
+        cardtry.map((ele) => {
+          if (ele.id === item.id) {
+            return { ...ele, isflip: true };
+          } else {
+            return ele;
+          }
+        })
+      );
+
+      /////herjh
+      count++;
+    } else {
+      console.log("item", item);
+      console.log("Firstchoice", Firstchoice);
+      if (item.name === Firstchoice.name) {
+        console.log("same");
+        setcardtry(
+          cardtry.map((ele) => {
+            if (ele.name === Firstchoice.name) {
+              // setcardtry(ele.isflip = true )
+              return { ...ele, ismatch: true, isflip: true };
+            } else {
+              // setcardtry(ele.isflip = false )
+              return ele;
+
+              /////////
+            }
+          })
+        );
+
+        // setcardtry([...cardtry , item.isflip= true])
+
+        console.log(cardtry);
+        count = 0;
+        setFirstchoice(null);
+      } else {
+        setcardtry(
+          cardtry.map((ele) => {
+            if (ele.ismatch) {
+              return ele;
+            } else {
+              return { ...ele, isflip: false };
+            }
+          })
+        );
+
+        /////
+
+        // setcardtry([...cardtry , item.isflip= false])
+
+        console.log("diff");
+        count = 0;
+        setFirstchoice(null);
+      }
+    }
+  };
+
+  return (
+    <div className="inner">
+      <div className="allCards">
+        {cardtry.map((item, i) => {
+          if (item.isflip) {
+            return (
+              <div>
+                {" "}
+                <img className="front" src={item.img} />{" "}
+              </div>
+            );
+          } else {
+            return (
+              <div>
+                {" "}
+                <img
+                  className="back"
+                  onClick={() => handleClick(item, i)}
+                  src={backimge}
+                />{" "}
+              </div>
+            );
+          }
+          // return (
+          //   <div className={item.isflip? "flipped" : ""} onClick={() => flipCard(item.id)}>
+          //     <img className="front" src={item.img} />
+          //     <img
+          //       className="back"
+          //       onClick={() => handleClick(item , i)}
+          //       src={backimge}
+          //     />
+          //   </div>
+          // );
+        })}
+        {console.log(cardtry)}
+      </div>
+      <button onClick={(e)=>{e.preventDefault }}>Restart</button>
+    </div>
+  );
+}; ///////
