@@ -8,7 +8,7 @@ export default Home = () => {
     <div>
       <img
         id="backGroundImg"
-        src="https://i.pinimg.com/originals/78/cc/6e/78cc6e42b85291f8edb4c9ca7a7a1d60.gif"
+        src="https://i.pinimg.com/564x/ef/37/cd/ef37cdd4aa5f17ede3d10050e8968df1.jpg"
         alt=""
       />
       <div className="describeItem">
@@ -21,7 +21,7 @@ export default Home = () => {
           </Link>{" "}
         </button>
         <div></div>
-        <button className="homeBtn">
+        <button className="homeBtn" id="lastB">
           {" "}
           <Link className="btnLink" to="/Instruction">
             {" "}
@@ -32,5 +32,6 @@ export default Home = () => {
     </div>
   );
 };
+
 
 
