@@ -1,104 +1,115 @@
-.allCards3{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 80px;
-
+.allCards3 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 80px;
 }
 
-.allCards3 div{
-    width : 200px;
-    height: 200px;
-    margin: 5px;
+.allCards3 div {
+  width: 200px;
+  height: 200px;
+  margin: 5px;
 }
 .allCards3 div img {
-    width : 100%;
-    height: 100%;  
-    border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
 }
 
-.gameChoice3{
-    display: inline;
-
+.gameChoice3 {
+  display: inline;
 }
 
-section :last-child{
-    margin-left: 225px;
+section :last-child {
+  margin-left: 225px;
 }
 
-section :first-child{
-    margin-right: 190px;
+section :first-child {
+  margin-right: 190px;
 }
 
-section{
-margin-top: 60px ;
-margin-bottom: 30px ;
-font-family:fantasy;
-font-size: 27px;
-
+section {
+  font-family: fantasy;
+  font-size: 27px;
 }
 
-.restartBtn3{
-    font-family:fantasy;
-    font-size: 26px;
-    border-radius: 6px;
-    border-style: none;
-    padding: 3px 10px;
-    transition: 0.5s ease;
-    color: rgb(111, 75, 168);
+.restartBtn3 {
+  font-family: fantasy;
+  font-size: 26px;
+  border-radius: 6px;
+  border-style: none;
+  padding: 3px 10px;
+  transition: 0.5s ease;
+  color: rgb(111, 75, 168);
 }
-.restartBtn3:hover{
-    transform: scale(1.10) perspective(1px); 
-    background-color: rgba(223, 219, 219, 0.534);
-   
-    color: rgb(211, 160, 40);
-}
+.restartBtn3:hover {
+  transform: scale(1.1) perspective(1px);
+  background-color: rgba(223, 219, 219, 0.534);
 
-/* .flipped .front {
-    transform:rotateY(90deg)
- 
+  color: rgb(211, 160, 40);
 }
 
-.allCards .front{
-    transform:rotateY(0deg) ; 
-     position: absolute;
-} */
-
-.letsBtn3{
-    display: block;
-    margin:  0 650px;
-   
+.letsBtn3 {
+  display: block;
+  margin-left: 500px;
+  margin-top: 100px;
+  border-style: none;
+  border-radius: 6px;
+  transition: 0.5s ease;
+}
+.letsBtn3:hover {
+  transform: scale(1.1) perspective(1px);
+  background-color: white;
 }
 
-.model {
-   background-color: rgba(188, 143, 143, 0.171);
- position: absolute;
- width: 100%;
- height: 100%;
-
+.model3 {
+  position: fixed;
+  top: 16%;
+  left: 6%;
+  right: 6%;
+  bottom: 4%;
+  background-color: rgba(255, 255, 255, 0.685);
+  font-family: fantasy;
+  padding-top: 10%;
+  margin: 0;
+  font-size: 50px;
 }
-
-.relDiv3{
-    position: relative;
-
-} 
-
 
 .back3 {
-    transition: transform 0.9s;
-  }
-  
-  .back3:active {
-    transform: rotateY(180deg);
-  }
-  
-  .front3 {
-    transition: transform 0.9s;
-    transform: rotateY(180deg);
-    transform-style: preserve-3d;
-  }
-  
-  .cardDiv3 {
-    transform-origin: center right;
-    position: relative;
-  }
+  transition: transform 0.9s;
+}
+
+.back3:active {
+  transform: rotateY(180deg);
+}
+
+.front3 {
+  transition: transform 0.9s;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}
+
+.cardDiv3 {
+  transform-origin: center right;
+  position: relative;
+}
+
+span {
+  font-size: 23px;
+}
+
+.homeIcon {
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.548);
+}
+
+.homeLink {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-family: fantasy;
+  font-size: 30px;
+}
+.divAct {
+  text-align: left;
+  margin-right: 1330px;
+}

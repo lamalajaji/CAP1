@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { confirm } from "react-confirm-box";
 import "./style.css";
 import Timer from "../Timer";
+import { FaBackward } from "react-icons/fa";
+import { BiHappyHeartEyes } from "react-icons/bi";
 
 export default HardGame = () => {
   //is it better to edit on the same array by using setCards or change on a copy?
@@ -170,12 +171,6 @@ export default HardGame = () => {
     setcardtry(shuuffleCards(pairCards));
   }, []);
 
-  //tryyyy
-
-  // flip Cards on click function -- still
-  const flipCard = (id) => {
-    console.log("gg");
-  };
 
   let count = 0;
 
@@ -183,7 +178,7 @@ export default HardGame = () => {
     console.log(rightMoves);
     if (rightMoves === 8) {
       let score = Moves / rightMoves;
-      if (score > 3) {
+      if (score > 4) {
         //2
         alert("Bad score ): let's try again! ");
         refreshPage();
@@ -266,6 +261,7 @@ export default HardGame = () => {
 
   return (
     <>
+      <p className="divAct"> <Link className="homeLink" to="/"> <FaBackward  className="homeIcon"/> <span> Home </span> </Link>   </p>
       <div className="relDiv3">
         <section>
           <p className="gameChoice3"> Moves: {Moves} </p>
@@ -299,23 +295,25 @@ export default HardGame = () => {
             }
           })}
           {console.log(cardtry)}
+        
         </div>
 
-        {/* <Timer time={90} go={timerState}  /> */}
+        <Timer time={90} go={timerState}  />
 
         {
           model ? (
-            <div className="model">
+            <div className="model3">
               {" "}
-              Great score , let's go to the next level{" "}
-              <button className="letsBtn">
+              Great score , Congrats! you are officially a friends fan now <BiHappyHeartEyes/> {" "}
+              <button className="letsBtn3">
                 {" "}
-                <Link to="/Gamelevel/Medium"> let's go </Link>{" "}
+                <Link className="homeLink" to="/"> GO BACK HOME </Link>{" "}
               </button>{" "}
             </div>
-          ) : null //absulote
+
+          ) : null 
         }
       </div>
     </>
   );
-};
+}; 
