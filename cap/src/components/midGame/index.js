@@ -1,8 +1,10 @@
  import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { confirm } from "react-confirm-box";
-import "./style.css";
-import Timer from "../Timer";
+ import { Link } from "react-router-dom";
+ import "./style.css";
+ import Timer from "../Timer";
+ import { FaBackward } from "react-icons/fa";
+ import { BiHappyHeartEyes } from "react-icons/bi";
+
 
 export default MediumGame = () => {
   //is it better to edit on the same array by using setCards or change on a copy?
@@ -86,7 +88,7 @@ export default MediumGame = () => {
 
     {
       id: 11,
-      name: "e", 
+      name: "e", ////////hereeeeeeeeeeeee
       isflip: false,
       ismatch: false,
       img: "https://i.pinimg.com/564x/9b/51/e6/9b51e6507e4b684e0e494b3fb8317a4a.jpg",
@@ -124,19 +126,13 @@ export default MediumGame = () => {
     setcardtry(shuuffleCards(pairCards));
   }, []);
 
-  
-  // flip Cards on click function -- still
-  const flipCard = (id) => {
-    console.log("gg");
-  };
-
   let count = 0;
 
   const showResult = () => {
     console.log(rightMoves);
     if (rightMoves === 5) {
       let score = Moves / rightMoves;
-      if (score > 3) {
+      if (score > 2) {
         //2
         alert("Bad score ): let's try again! ");
         refreshPage();
@@ -164,7 +160,7 @@ export default MediumGame = () => {
       count++;
     } else {
       setMoves(Moves + 1);
-      console.log(Moves);
+ 
       if (item.name === Firstchoice.name) {
         console.log("same");
         setrightMoves(rightMoves + 1);
@@ -181,7 +177,7 @@ export default MediumGame = () => {
           })
         );
 
-        console.log(cardtry);
+        
         count = 0;
         setFirstchoice(null);
       } else {
@@ -220,6 +216,14 @@ export default MediumGame = () => {
   return (
     <>
       <div className="relDiv2">
+        <p className="divAct">
+          {" "}
+          <Link className="homeLink" to="/">
+            {" "}
+            <FaBackward className="homeIcon" /> <span> Home </span>{" "}
+          </Link>{" "}
+        </p>
+
         <section>
           <p className="gameChoice2"> Moves: {Moves} </p>
           <p className="gameChoice2">Right Moves: {rightMoves}</p>
@@ -251,19 +255,22 @@ export default MediumGame = () => {
               );
             }
           })}
-          {console.log(cardtry)}
+         
         </div>
 
-        {/* <Timer time={40} go={timerState}  /> */}
+        <Timer time={40} go={timerState} />
 
         {
           model ? (
-            <div className="model">
-              {" "}
-              Great score , let's go to the next level{" "}
+            <div className="model2">
+              {/* <img id="backGroundImg" src="https://i.pinimg.com/originals/78/cc/6e/78cc6e42b85291f8edb4c9ca7a7a1d60.gif" alt=""/>{" "} */}
+              Great score <BiHappyHeartEyes/> let's go to the next level!{" "}
               <button className="letsBtn">
                 {" "}
-                <Link to="/Gamelevel/Medium"> let's go </Link>{" "}
+                <Link className="btnLink" to="/Gamelevel/Medium">
+                  {" "}
+                  let's go{" "}
+                </Link>{" "}
               </button>{" "}
             </div>
           ) : null //absulote
@@ -271,4 +278,4 @@ export default MediumGame = () => {
       </div>
     </>
   );
-}; 
+}; ///////

@@ -23,19 +23,27 @@
 }
 
 section :last-child{
-    margin-left: 225px;
+    margin-left: 200px;
 }
 
 section :first-child{
     margin-right: 190px;
+    margin-left: 15px;
 }
 
 section{
-margin-top: 60px ;
 margin-bottom: 30px ;
 font-family:fantasy;
 font-size: 27px;
 }
+
+.homeLink{
+    text-decoration: none;
+    color: gray;
+    font-family: fantasy;
+    font-size: 24px;
+  }
+
 
 .restartBtn2{
     font-family:fantasy;
@@ -53,34 +61,24 @@ font-size: 27px;
     color: rgb(211, 160, 40);
 }
 
-/* .flipped .front {
-    transform:rotateY(90deg)
- 
-}
-
-.allCards .front{
-    transform:rotateY(0deg) ; 
-     position: absolute;
-} */
-
 .letsBtn2{
     display: block;
     margin:  0 650px;
    
 }
 
-.model {
-   background-color: rgba(188, 143, 143, 0.171);
- position: absolute;
- width: 100%;
- height: 100%;
-
-}
-
-.relDiv2{
-    position: relative;
-
-} 
+.model2 {
+    position: fixed;
+    top: 8%;
+    left: 10%;
+    right: 10%;
+    bottom: 7%;
+    background-color: rgba(255, 255, 255, 0.685);
+    font-family: fantasy;
+    padding-top: 10%;
+    margin: 0;
+    font-size: 50px;
+  }
 
 .back2 {
     transition: transform 0.9s;
@@ -100,3 +98,4 @@ font-size: 27px;
     transform-origin: center right;
     position: relative;
   }
+
