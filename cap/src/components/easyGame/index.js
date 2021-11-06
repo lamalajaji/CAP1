@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { confirm } from "react-confirm-box";
 import "./style.css";
 import Timer from "../Timer";
-
-
+import { FaBackward } from "react-icons/fa";
+import { BiHappyHeartEyes } from "react-icons/bi";
 
 export default Easygame = () => {
   //is it better to edit on the same array by using setCards or change on a copy?
   const [cardtry, setcardtry] = useState([]);
   const [Moves, setMoves] = useState(0);
   let [rightMoves, setrightMoves] = useState(0);
-  const [timerState, settimerState] = useState(true)
+  const [timerState, settimerState] = useState(true);
   const [Cards, setCards] = useState([
     {
       id: 1,
@@ -36,7 +35,7 @@ export default Easygame = () => {
     },
     {
       id: 4,
-      name: "d",//
+      name: "d", //
       isflip: false,
       ismatch: false,
       img: "https://i.pinimg.com/564x/91/41/41/9141412d401450a7ae97f46779701fe9.jpg",
@@ -95,20 +94,14 @@ export default Easygame = () => {
     setcardtry(shuuffleCards(pairCards));
   }, []);
 
-  //tryyyy
-
-  // flip Cards on click function -- still
-  const flipCard = (id) => {
-    console.log("gg");
-  };
-
   let count = 0;
 
   const showResult = () => {
     console.log(rightMoves);
     if (rightMoves === 3) {
       let score = Moves / rightMoves;
-      if (score > 3) { //2
+      if (score > 2) {
+        //2
         alert("Bad score ): let's try again! ");
         refreshPage();
       } else {
@@ -152,7 +145,6 @@ export default Easygame = () => {
           })
         );
 
-        console.log(cardtry);
         count = 0;
         setFirstchoice(null);
       } else {
@@ -188,53 +180,68 @@ export default Easygame = () => {
     window.location.reload(false);
   };
 
-
   return (
     <>
-
-<div className="relDiv"> 
-    
-      <section>
-        <p className="gameChoice"> Moves: {Moves} </p>
-        <p className="gameChoice">Right Moves: {rightMoves}</p>
-        <button className="restartBtn" onClick={refreshPage}>
+      <div className="relDiv">
+        <p className="divAct">
           {" "}
-          Restart Game{" "}
-        </button>{" "}
-      </section>
+          <Link className="homeLink1" to="/">
+            {" "}
+            <FaBackward className="homeIcon" /> Home
+          </Link>{" "}
+        </p>
 
-      <div className="allCards">
-        {cardtry.map((item, i) => {
-          if (item.isflip) {
-            return (
-              <div className="cardDiv">
+        <section>
+          <p className="gameChoice"> Moves: {Moves} </p>
+          <p className="gameChoice">Right Moves: {rightMoves}</p>
+          <button className="restartBtn" onClick={refreshPage}>
+            {" "}
+            Restart Game{" "}
+          </button>{" "}
+        </section>
+
+        <div className="allCards">
+          {cardtry.map((item, i) => {
+            if (item.isflip) {
+              return (
+                <div className="cardDiv">
+                  {" "}
+                  <img className="front" src={item.img} />{" "}
+                </div>
+              );
+            } else {
+              return (
+                <div className="cardDiv">
+                  {" "}
+                  <img
+                    className="back"
+                    onClick={() => handleClick(item, i)}
+                    src={backimge}
+                  />{" "}
+                </div>
+              );
+            }
+          })}
+        </div>
+
+        <Timer time={15} go={timerState} />
+
+        {
+          model ? (
+            <div className="model">
+              {/* <img id="backGroundImg" src="https://i.pinimg.com/originals/78/cc/6e/78cc6e42b85291f8edb4c9ca7a7a1d60.gif" alt=""/>{" "} */}
+              Great score <BiHappyHeartEyes/> let's go to the next level!{" "}
+              <button className="letsBtn">
                 {" "}
-                <img className="front" src={item.img} />{" "}
-              </div>
-            );
-          } else {
-            return (
-              <div className="cardDiv">
-                {" "}
-                <img
-                  className="back"
-                  onClick={() => handleClick(item, i)}
-                  src={backimge}
-                />{" "}
-              </div>
-            );
-          }
-        })}
-        {console.log(cardtry)}
+                <Link className="btnLink" to="/Gamelevel/Medium">
+                  {" "}
+                  let's go{" "}
+                </Link>{" "}
+              </button>{" "}
+            </div>
+          ) : null //absulote
+        }
       </div>
-
-{/* <Timer time={15} go={timerState}  /> */}
-
-    {model ? <div className="model" > Great score , let's go to the next level <button className="letsBtn" > <Link to="/Gamelevel/Medium"> let's go  </Link> </button> </div> : null //absulote 
-         } 
-        </div> 
     </>
   );
 }; ///////
-
-
