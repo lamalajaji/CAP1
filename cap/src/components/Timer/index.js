@@ -1,6 +1,7 @@
 import React from "react";
+import "./style.css";
 
-export default class Timer extends React.Component {
+export default  class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { time: {}, seconds: this.props.time };
@@ -50,18 +51,20 @@ export default class Timer extends React.Component {
     };
 
     // Check if we're at zero.
-    if (seconds == 0) {
+    if (this.props.go === false) {
+      console.log("stop");
+      clearInterval(this.timer);
+    } else if (seconds == 0) {
       clearInterval(this.timer);
       alert("GAME OVER ): let's try again! ");
       refreshPage();
-      console.log("end");
     }
   }
 
   render() {
     // if (this.props.go === true) {
     return (
-      <div>
+      <div className="timerStyle">
         {this.startTimer()}
         TIME LEFT: {this.state.time.s}
       </div>
